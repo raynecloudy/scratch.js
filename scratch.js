@@ -1,4 +1,4 @@
-import { default as fetch } from "node-fetch";
+import { fetch } from "undici";
 
 export const login = (arg1, arg2) => new Promise(async (resolve, reject) => {
   if (arg1 && !arg2) {
