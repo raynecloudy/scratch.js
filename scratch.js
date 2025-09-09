@@ -44,4 +44,5 @@ export const logout = async () => {
       "Content-Type": "application/json"
     }
   }));
+  token = null;
 };
