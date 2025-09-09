@@ -21,13 +21,13 @@ export const login = (username, password) => new Promise(async (resolve, reject)
   const data = (await response.json())[0];
 
   if (response.ok) {
-    resolve(new Credentials(data.token, data.username));
+    resolve(new Session(data.token, data.username));
   } else {
     reject(data.msg);
   }
 });
 
-class Credentials {
+class Session {
   token = null;
   username = null;
 
