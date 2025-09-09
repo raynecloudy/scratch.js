@@ -1,20 +1,54 @@
 declare module "scratch.js" {
-  const login: (username: string, password: string) => Promise<LoginResponse>;
-  const login: (username: string, password: string) => Promise<void>;
+  const login: (username: string, password: string) => Promise<Credentials>;
+  
+  interface Account {
+    readonly aboutMe: string;
+    readonly country: string;
+    readonly id: number;
+    readonly isScratchTeam: boolean;
+    readonly joined: string;
+    readonly whatImWorkingOn: string;
+    readonly username: string;
+  }
+  
+  interface Author {
+    readonly id: number;
+    readonly isScratchTeam: boolean;
+    readonly joined: string;
+    readonly username: string;
+    
+    fetch: () => Promise<Account>;
+  }
+  
+  class Credentials {
+    readonly token: string;
+    readonly username: string;
 
-  interface LoginResponse {
-    readonly token: string
-    readonly tries: number
-    readonly user: ScratchUser
+    constructor(token: string, username: string);
+
+    logout: () => Promise<void>;
   }
 
-  interface ScratchUser {
-    readonly aboutMe: string
-    readonly country: string
-    readonly id: number
-    readonly joined: string
-    readonly isScratchTeam: boolean
-    readonly whatImWorkingOn: string
-    readonly username: string
+  interface Project {
+    readonly author: Author;
+    readonly commentsAllowed: boolean;
+    readonly history: {
+      readonly created: string,
+      readonly modified: string,
+      readonly shared: string
+    };
+    readonly id: number;
+    readonly instructions: string;
+    readonly notesAndCredits: string;
+    readonly public: boolean;
+    readonly published: boolean;
+    readonly stats: {
+      readonly favorites: number,
+      readonly loves: number,
+      readonly remixes: number,
+      readonly views: number
+    };
+    readonly token: string;
+    readonly visibility: string;
   }
 }
