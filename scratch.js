@@ -1,6 +1,9 @@
 import { default as fetch } from "node-fetch";
 
-let token = null;
+let credentials = {
+  token: null,
+  username: null
+};
 
 export const login = (username, password) => new Promise(async (resolve, reject) => {
   const response = await fetch("https://scratch.mit.edu/accounts/login/", {
@@ -23,7 +26,8 @@ export const login = (username, password) => new Promise(async (resolve, reject)
   const data = (await response.json())[0];
 
   if (response.ok) {
-    token = data.token;
+    credentials.token = data.token;
+    credentials.username = data.username;
     resolve("Logged in successfully");
   } else {
     reject(data.msg);
@@ -44,5 +48,6 @@ export const logout = async () => {
       "Content-Type": "application/json"
     }
   });
-  token = null;
+  credentials.token = null;
+  credentials.username = null;
 };
