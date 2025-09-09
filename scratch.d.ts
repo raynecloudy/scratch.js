@@ -1,5 +1,8 @@
 declare module "scratch.js" {
-  const login: (username: string, password: string) => Promise<Session>;
+  const login: {
+    (username: string, password: string): Promise<Session>,
+    (token: string): Promise<Session>
+  };
   
   interface Account {
     readonly aboutMe: string;
@@ -19,13 +22,13 @@ declare module "scratch.js" {
     
     readonly fetch: () => Promise<Account>;
   }
-  
+
   class Session {
     readonly token: string;
-    readonly username: string;
-
-    constructor(token: string, username: string);
-
+    
+    constructor(token: string);
+    
+    readonly fetch: () => Promise<Account>;
     readonly logout: () => Promise<void>;
   }
 

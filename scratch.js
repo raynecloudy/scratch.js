@@ -1,6 +1,11 @@
 import { default as fetch } from "node-fetch";
 
-export const login = (username, password) => new Promise(async (resolve, reject) => {
+export const login = (arg1, arg2) => new Promise(async (resolve, reject) => {
+  if (arg1 && !arg2) {
+    resolve(new Session(arg1));
+    return;
+  }
+
   const response = await fetch("https://scratch.mit.edu/accounts/login/", {
     credentials: "include",
     method: "POST",
@@ -21,7 +26,7 @@ export const login = (username, password) => new Promise(async (resolve, reject)
   const data = (await response.json())[0];
 
   if (response.ok) {
-    resolve(new Session(data.token, data.username));
+    resolve(new Session(data.token));
   } else {
     reject(data.msg);
   }
@@ -29,11 +34,9 @@ export const login = (username, password) => new Promise(async (resolve, reject)
 
 class Session {
   token = null;
-  username = null;
 
-  constructor(token, username) {
+  constructor(token) {
     this.token = token;
-    this.username = username;
   }
 
   logout = async () => {
@@ -51,6 +54,5 @@ class Session {
       }
     });
     this.token = null;
-    this.username = null;
   };
 }
