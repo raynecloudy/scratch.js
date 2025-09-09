@@ -1,5 +1,6 @@
 declare module "scratch.js" {
   const login: (username: string, password: string) => Promise<LoginResponse>;
+  const login: (username: string, password: string) => Promise<void>;
 
   interface LoginResponse {
     readonly token: string

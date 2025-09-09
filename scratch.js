@@ -32,7 +32,7 @@ export const login = (username, password) => new Promise(async (resolve, reject)
 
 export const logout = async () => {
   if (!token) return;
-  console.log(await fetch("https://scratch.mit.edu/accounts/logout/", {
+  await fetch("https://scratch.mit.edu/accounts/logout/", {
     credentials: "include",
     method: "POST",
     headers: {
@@ -43,6 +43,6 @@ export const logout = async () => {
       "X-Requested-With": "application/x-www-form-urlencoded",
       "Content-Type": "application/json"
     }
-  }));
+  });
   token = null;
 };
