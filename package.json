@@ -1,0 +1,20 @@
+{
+  "name": "scratch.js",
+  "version": "1.0.0",
+  "description": "API Wrapper for scratch.mit.edu",
+  "keywords": [
+    "scratch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "github.com/raynecloudy/scratch.js"
+  },
+  "license": "MIT",
+  "author": "raynecloudy",
+  "type": "module",
+  "main": "scratch.js",
+  "types": "scratch.d.ts",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
