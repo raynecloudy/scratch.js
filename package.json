@@ -13,7 +13,7 @@
   "author": "raynecloudy",
   "type": "module",
   "main": "scratch.js",
-  "types": "scratch.d.ts",
+  "types": "index.d.ts",
   "dependencies": {
     "undici": "^7.16.0"
   }
