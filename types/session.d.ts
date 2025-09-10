@@ -1,4 +1,4 @@
-import { Account } from "./account";
+import { AuthenticatedAccount } from "./account";
 
 export const login: {
   (username: string, password: string): Promise<Session>,
@@ -6,10 +6,12 @@ export const login: {
 };
 
 export class Session {
-  readonly token: string;
+  csrfToken: string;
+  sessionId: string;
+  token: string;
   
-  constructor(token: string);
+  constructor(csrfToken: string, sessionId: string, token: string);
   
-  readonly fetch: () => Promise<Account>;
+  readonly fetch: () => Promise<AuthenticatedAccount>;
   readonly logout: () => Promise<void>;
 }
