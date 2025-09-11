@@ -12,6 +12,6 @@ export class Session {
   
   constructor(csrfToken: string, sessionId: string, token: string);
   
-  readonly fetch: () => Promise<AuthenticatedAccount>;
-  readonly logout: () => Promise<void>;
+  fetch(): Promise<AuthenticatedAccount>;
+  logout(): Promise<void>;
 }

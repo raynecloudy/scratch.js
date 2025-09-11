@@ -6,5 +6,5 @@ export interface Author {
   readonly joined: string;
   readonly username: string;
   
-  readonly fetch: () => Promise<Account>;
+  fetch(): Promise<Account>;
 }

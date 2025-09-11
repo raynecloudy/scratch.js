@@ -1,3 +1,5 @@
+import { Message } from "./message";
+
 export interface Account {
   readonly aboutMe: string;
   readonly country: string;
@@ -6,6 +8,8 @@ export interface Account {
   readonly joined: string;
   readonly whatImWorkingOn: string;
   readonly username: string;
+
+  getMessageCount(): Promise<number>;
 }
 
 export interface AuthenticatedAccount extends Account {
@@ -30,4 +34,6 @@ export interface AuthenticatedAccount extends Account {
   readonly token: string;
   readonly unsupportedBrowserBanner: boolean;
   readonly withParentEmail: boolean;
+
+  getMessages(from: number, to: number): Promise<Message[]>;
 }
