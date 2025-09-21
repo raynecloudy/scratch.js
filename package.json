@@ -1,7 +1,8 @@
 {
   "name": "scratch.js",
-  "version": "1.0.0",
   "description": "API Wrapper for scratch.mit.edu",
+  "version": "1.0.0",
+  "author": "raynecloudy",
   "keywords": [
     "scratch"
   ],
@@ -10,11 +11,11 @@
     "url": "github.com/raynecloudy/scratch.js"
   },
   "license": "MIT",
-  "author": "raynecloudy",
   "type": "module",
   "main": "scratch.js",
   "types": "scratch.d.ts",
   "dependencies": {
     "undici": "^7.16.0"
-  }
+  },
+  "readme": "README.md"
 }
