@@ -2,7 +2,11 @@ import { Account } from "./account";
 import { Project } from "./project";
 import { Studio } from "./studio";
 
-export type CommentLocation = "project" | "studios" | "users";
+export enum CommentLocation {
+  Project = 0,
+  Profile = 1,
+  Studio = 2
+};
 
 export interface Message {
   readonly actor: {
@@ -31,6 +35,7 @@ export interface FollowMessage extends Message {}
 export interface LoveOrFavoriteMessage extends Message {
   readonly project: {
     readonly id: number;
+    readonly title: string;
 
     fetch(): Promise<Project>;
   };
@@ -61,9 +66,10 @@ export interface CommentMessage extends Message {
     readonly id: number;
     readonly location: {
       readonly id: number;
+      readonly title: string;
       readonly type: CommentLocation;
 
-      fetch(): Promise<typeof this.comment.location.type extends "project" ? Project : typeof this.location.type extends "studiis" ? Studio : Account>;
+      fetch(): Promise<typeof this.comment.location.type extends CommentLocation.Project ? Project : typeof this.location.type extends CommentLocation.Studio ? Studio : Account>;
     };
     readonly repliedTo: string | null;
   };

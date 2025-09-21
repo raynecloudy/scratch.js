@@ -35,5 +35,6 @@ export interface AuthenticatedAccount extends Account {
   readonly unsupportedBrowserBanner: boolean;
   readonly withParentEmail: boolean;
 
+  getMessages(): Promise<Message[]>;
   getMessages(from: number, to: number): Promise<Message[]>;
 }
