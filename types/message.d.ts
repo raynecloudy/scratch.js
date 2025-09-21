@@ -6,7 +6,7 @@ export enum CommentLocation {
   Project = 0,
   Profile = 1,
   Studio = 2
-};
+}
 
 export interface Message {
   readonly actor: {
@@ -69,7 +69,7 @@ export interface CommentMessage extends Message {
       readonly title: string;
       readonly type: CommentLocation;
 
-      fetch(): Promise<typeof this.comment.location.type extends CommentLocation.Project ? Project : typeof this.location.type extends CommentLocation.Studio ? Studio : Account>;
+      fetch<T extends Account | Project | Studio>(): Promise<T>;
     };
     readonly repliedTo: string | null;
   };
