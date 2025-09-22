@@ -4,8 +4,8 @@ export interface Account {
   readonly aboutMe: string;
   readonly country: string;
   readonly id: number;
-  readonly scratchTeam: boolean;
   readonly joined: string;
+  readonly scratchTeam: boolean;
   readonly whatImWorkingOn: string;
   readonly username: string;
 
@@ -19,7 +19,7 @@ export interface AuthenticatedAccount extends Account {
   readonly confirmEmailBanner: boolean;
   readonly email: string;
   readonly emailVerified: boolean;
-  readonly gender: "female" | "male" | "(Prefer not to say)" | (string & {});
+  readonly gender: "female" | "male" | "non-binary" | "(Prefer not to say)" | (string & {});
   readonly invited: boolean;
   readonly mustResetPassword: boolean;
   readonly mustCompleteRegistration: boolean;
