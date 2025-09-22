@@ -1,9 +1,6 @@
 import { AuthenticatedAccount } from "./account";
 
-export const login: {
-  (username: string, password: string): Promise<Session>,
-  (token: string): Promise<Session>
-};
+export const login: (username: string, password: string) => Promise<Session>;
 
 export class Session {
   csrfToken: string;

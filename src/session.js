@@ -7,11 +7,6 @@ export const CommentLocation = {
 };
 
 export const login = (arg1, arg2) => new Promise(async (resolve, reject) => {
-  if (arg1 && !arg2) {
-    resolve(new Session(arg1));
-    return;
-  }
-
   const response = await fetch("https://scratch.mit.edu/accounts/login/", {
     credentials: "include",
     method: "POST",
