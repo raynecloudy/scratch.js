@@ -1,6 +1,7 @@
-import { login, Session } from "./src/session.js";
+import { CommentLocation, login, Session } from "./src/session.js";
 
 export {
+  CommentLocation,
   login,
   Session
 };
